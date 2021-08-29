@@ -1,0 +1,211 @@
+// Reset
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  // 1rem = 10px
+  font-size: 62.5%;
+  box-sizing: border-box;
+  line-height: 1.5;
+  letter-spacing: 2px;
+  font-family: "Raleway", sans-serif;
+}
+
+button {
+  outline: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  border-radius: 0.5rem;
+}
+
+:root {
+  --color-green: #01937c;
+  --color-navy: #1f4068;
+  --color-dark-red: #d83a56;
+  --color-light-red: #ff616d;
+}
+
+// App
+.container {
+  padding: 2rem;
+}
+
+h1 {
+  text-align: center;
+  font-size: 3rem;
+  margin: 2rem 0;
+}
+
+.todo-list {
+  width: 80vw;
+  margin: 2rem auto 1rem auto;
+
+  &__heading {
+    display: flex;
+    align-items: center;
+    margin: 1rem 0;
+  }
+
+  h2 {
+    margin-right: auto;
+  }
+
+  &__btn {
+    background: #eee;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s;
+
+    &:hover {
+      background: var(--color-navy);
+      color: #fff;
+    }
+
+    &--todo:hover {
+      background: var(--color-green);
+      color: #fff;
+    }
+  }
+}
+
+// Add bar
+.addbar {
+  width: 80vw;
+  margin: 0 auto;
+
+  &__form {
+    font-size: 1.2rem;
+    display: flex;
+    border: 1px #ddd solid;
+    border-radius: 0.5rem;
+    overflow: hidden;
+  }
+
+  &__text {
+    padding: 1rem;
+    outline: none;
+    border: none;
+    flex-grow: 1;
+    font-family: inherit;
+    letter-spacing: inherit;
+  }
+
+  &__submit {
+    padding: 0 1rem;
+    background-color: var(--color-green);
+    color: #fff;
+    font-weight: 700;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+
+    &:hover {
+      transform: scale(1.15) translateX(-1px);
+      opacity: 0.8;
+    }
+  }
+
+  &__msg {
+    color: var(--color-light-red);
+    font-size: 1.2rem;
+    margin: 0.5rem 0 0 1rem;
+    display: none;
+  }
+}
+
+// Task List
+.task-list {
+  margin: 1rem auto 0 auto;
+  font-size: 1.2rem;
+}
+
+// Task item
+.task-item {
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border: 1px #ddd solid;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+
+  & input {
+    display: none;
+  }
+
+  &__name {
+    flex-grow: 1;
+    cursor: pointer;
+    display: inline-block;
+    padding-left: 3.3rem;
+    position: relative;
+  }
+
+  &__checkmark {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    border: 1px #ddd solid;
+    cursor: pointer;
+    overflow: hidden;
+    position: absolute;
+    top: -1px;
+    left: 0;
+
+    &::before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      content: "\2713";
+      font-family: inherit;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.8rem;
+      height: 2rem;
+      color: #fff;
+      background-color: var(--color-green);
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+  }
+
+  &__cross {
+    background: transparent;
+    color: var(--color-dark-red);
+    transition: all 0.3s;
+
+    &:hover {
+      opacity: 0.8;
+      transform: scale(1.2);
+      color: var(--color-light-red);
+    }
+  }
+
+  // Checkbox hack: Show green tick after hided checkbox is checked
+  input[type="checkbox"]:checked ~ &__name &__checkmark::before {
+    opacity: 1;
+  }
+}
+
+// Clear button
+.clear-btn {
+  margin-top: 2.5rem;
+  text-align: center;
+
+  & button {
+    padding: 0.5rem 1.5rem;
+    transition: all 0.2s;
+  }
+
+  & button:hover {
+    transform: scale(1.1) translateX(-1px);
+    opacity: 0.8;
+  }
+}
